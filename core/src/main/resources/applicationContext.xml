@@ -60,7 +60,7 @@
 				 -->
 			</props>
 		</property>
-		<property name="packagesToScan" value="idv.elliot.domain" />
+		<property name="packagesToScan" value="tw.elliot.domain" />
 	</bean>
 
 	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
@@ -70,7 +70,9 @@
 	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
 
 	<context:annotation-config />
-	<context:component-scan base-package="tw.elliot" />
+	<context:component-scan base-package="tw.elliot">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
 	<!-- <context:mbean-server id="mxserver" /> -->
 	<context:mbean-export registration="replaceExisting" />
 	<!-- 

@@ -23,8 +23,8 @@
 		</encoder>
 	</appender>
 	
-	<logger name="org.elliot"  level="DEBUG"/>
-	<root level="INFO">
+	<logger name="tw.elliot"  level="DEBUG"/>
+	<root level="DEBUG">
 		<appender-ref ref="stdout" />
 		<appender-ref ref="file" />
 		<appender-ref ref="roo" />

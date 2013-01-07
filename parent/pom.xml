@@ -13,12 +13,12 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<demo.version>1.0</demo.version>
-		<spring.version>3.1.2.RELEASE</spring.version>
-		<spring.security.version>3.1.0.RELEASE</spring.security.version>
+		<spring.version>3.2.0.RELEASE</spring.version>
+		<spring.security.version>3.1.3.RELEASE</spring.security.version>
 		<struts1.version>1.3.10</struts1.version>
-		<struts2.version>2.3.4</struts2.version>
-		<slf4j.version>1.6.6</slf4j.version>
-		<hibernate.version>4.1.5.SP1</hibernate.version>
+		<struts2.version>2.3.7</struts2.version>
+		<slf4j.version>1.7.2</slf4j.version>
+		<hibernate.version>4.1.9.Final</hibernate.version>
 		<tiles.version>2.2.2</tiles.version>
 	</properties>
 	<dependencyManagement>
@@ -31,13 +31,13 @@
 			<dependency>
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
-				<version>4.10</version>
+				<version>4.11</version>
 				<scope>test</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.mockito</groupId>
 				<artifactId>mockito-all</artifactId>
-				<version>1.9.0</version>
+				<version>1.9.5</version>
 				<scope>test</scope>
 			</dependency>
 			<!-- J2EE Spec -->
@@ -48,28 +48,28 @@
 				<scope>provided</scope>
 			</dependency>
 			<!-- End of J2EE Spec -->
-			
+
 			<!-- JSTL Lib -->
-			<!--  Spec 1.2 -->
+			<!-- Spec 1.2 -->
 			<dependency>
 				<groupId>jstl</groupId>
 				<artifactId>jstl</artifactId>
 				<version>1.2</version>
 			</dependency>
-			<!--  Spec 1.1 -->
+			<!-- Spec 1.1 -->
 			<dependency>
 				<groupId>taglibs</groupId>
 				<artifactId>standard</artifactId>
 				<version>1.1.2</version>
 			</dependency>
-			
+
 			<!-- Endo of JSTL Lib -->
-			
+
 			<!-- Logging Libraries -->
 			<dependency>
 				<groupId>ch.qos.logback</groupId>
 				<artifactId>logback-classic</artifactId>
-				<version>1.0.6</version>
+				<version>1.0.9</version>
 			</dependency>
 			<!-- 用以取代commons-logging -->
 			<dependency>
@@ -82,14 +82,14 @@
 				<artifactId>jcl-over-slf4j</artifactId>
 				<version>${slf4j.version}</version>
 			</dependency>
-			<!-- 用以取代Log4j，若確定系統中都是透過commons-logging並未直接呼叫log4j的話可以不用加此設定  -->
+			<!-- 用以取代Log4j，若確定系統中都是透過commons-logging並未直接呼叫log4j的話可以不用加此設定 -->
 			<dependency>
 				<groupId>org.slf4j</groupId>
 				<artifactId>log4j-over-slf4j</artifactId>
 				<version>${slf4j.version}</version>
 			</dependency>
 			<!-- End of Logging Libraries -->
-			
+
 			<!-- Database -->
 			<dependency>
 				<groupId>hsqldb</groupId>
@@ -100,16 +100,16 @@
 			<dependency>
 				<groupId>com.h2database</groupId>
 				<artifactId>h2</artifactId>
-				<version>1.3.168</version>
+				<version>1.3.170</version>
 			</dependency>
 
 			<dependency>
 				<groupId>mysql</groupId>
 				<artifactId>mysql-connector-java</artifactId>
-				<version>5.1.18</version>
+				<version>5.1.22</version>
 			</dependency>
 			<!-- End of Database -->
-			
+
 			<!-- Connection Pool -->
 			<dependency>
 				<groupId>c3p0</groupId>
@@ -128,20 +128,16 @@
 				<classifier>jdk5</classifier>
 			</dependency>
 			<!-- End of Connection Pool -->
-			
+
 			<!-- Hibernate Libraries -->
 			<dependency>
 				<groupId>org.hibernate</groupId>
 				<artifactId>hibernate-core</artifactId>
 				<version>${hibernate.version}</version>
 			</dependency>
-			<!-- Merge into core from 3.6.0
-			<dependency>
-				<groupId>org.hibernate</groupId>
-				<artifactId>hibernate-annotations</artifactId>
-				<version>${hibernate.version}</version>
-			</dependency>
-			-->
+			<!-- Merge into core from 3.6.0 <dependency> <groupId>org.hibernate</groupId> 
+				<artifactId>hibernate-annotations</artifactId> <version>${hibernate.version}</version> 
+				</dependency> -->
 			<dependency>
 				<groupId>org.hibernate</groupId>
 				<artifactId>hibernate-entitymanager</artifactId>
@@ -161,7 +157,7 @@
 			<dependency>
 				<groupId>org.hibernate</groupId>
 				<artifactId>hibernate-validator</artifactId>
-				<version>4.3.0.Final</version>
+				<version>4.3.1.Final</version>
 			</dependency>
 			<!-- Hibernate Dependency -->
 			<dependency>
@@ -171,6 +167,17 @@
 			</dependency>
 
 			<!-- Spring -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>${spring.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>commons-logging</groupId>
+						<artifactId>commons-logging</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-aop</artifactId>
@@ -185,8 +192,6 @@
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-orm</artifactId>
 				<version>${spring.version}</version>
-				<type>jar</type>
-				<scope>compile</scope>
 				<exclusions>
 					<exclusion>
 						<artifactId>commons-logging</artifactId>
@@ -214,6 +219,12 @@
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-webmvc</artifactId>
 				<version>${spring.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>commons-logging</groupId>
+						<artifactId>commons-logging</artifactId>
+					</exclusion>
+				</exclusions>
 			</dependency>
 			<dependency>
 				<groupId>org.springframework</groupId>
@@ -231,6 +242,12 @@
 				<groupId>org.springframework.security</groupId>
 				<artifactId>spring-security-core</artifactId>
 				<version>${spring.security.version}</version>
+				<exclusions>
+					<exclusion>
+						<artifactId>spring-context</artifactId>
+						<groupId>org.springframework</groupId>
+					</exclusion>
+				</exclusions>
 			</dependency>
 			<dependency>
 				<groupId>org.springframework.security</groupId>
@@ -246,17 +263,17 @@
 			<!-- Spring Dependency -->
 			<dependency>
 				<groupId>org.aspectj</groupId>
-				<artifactId>aspectjweaver</artifactId>
-				<version>1.7.0</version>
+				<artifactId>aspectjrt</artifactId>
+				<version>1.7.1</version>
 			</dependency>
 			<dependency>
 				<groupId>org.javassist</groupId>
 				<artifactId>javassist</artifactId>
-				<version>3.16.1-GA</version>
+				<version>3.17.1-GA</version>
 				<scope>runtime</scope>
 			</dependency>
 			<!-- End of Spring Dependency -->
-			
+
 			<!-- Util -->
 			<dependency>
 				<groupId>org.apache.commons</groupId>
@@ -271,7 +288,7 @@
 			<dependency>
 				<groupId>commons-codec</groupId>
 				<artifactId>commons-codec</artifactId>
-				<version>1.6</version>
+				<version>1.7</version>
 			</dependency>
 			<dependency>
 				<groupId>commons-collections</groupId>
@@ -281,13 +298,24 @@
 			<dependency>
 				<groupId>com.google.guava</groupId>
 				<artifactId>guava</artifactId>
-				<version>12.0</version>
+				<version>13.0.1</version>
+			</dependency>
+			<dependency>
+				<groupId>joda-time</groupId>
+				<artifactId>joda-time</artifactId>
+				<version>2.1</version>
 			</dependency>
 			<!-- Struts1 -->
 			<dependency>
 				<groupId>org.apache.struts</groupId>
 				<artifactId>struts-core</artifactId>
 				<version>${struts1.version}</version>
+				<exclusions>
+					<exclusion>
+						<artifactId>javassist</artifactId>
+						<groupId>javassist</groupId>
+					</exclusion>
+				</exclusions>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.struts</groupId>
@@ -299,7 +327,7 @@
 				<artifactId>struts-taglib</artifactId>
 				<version>${struts1.version}</version>
 			</dependency>
-			
+
 			<!-- Struts2 -->
 			<dependency>
 				<groupId>org.apache.struts</groupId>
@@ -327,7 +355,7 @@
 				<artifactId>struts2-json-plugin</artifactId>
 				<version>${struts2.version}</version>
 			</dependency>
-			
+
 			<!-- Tiles 2 -->
 			<dependency>
 				<groupId>org.apache.tiles</groupId>
@@ -353,17 +381,23 @@
 				<groupId>org.apache.velocity</groupId>
 				<artifactId>velocity</artifactId>
 				<version>1.7</version>
+				<exclusions>
+					<exclusion>
+						<artifactId>commons-lang</artifactId>
+						<groupId>commons-lang</groupId>
+					</exclusion>
+				</exclusions>
 			</dependency>
 			<!-- JSON Library -->
 			<dependency>
 				<groupId>org.codehaus.jackson</groupId>
 				<artifactId>jackson-core-asl</artifactId>
-				<version>1.9.7</version>
+				<version>1.9.11</version>
 			</dependency>
 			<dependency>
 				<groupId>org.codehaus.jackson</groupId>
 				<artifactId>jackson-mapper-asl</artifactId>
-				<version>1.9.7</version>
+				<version>1.9.11</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -373,7 +407,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.5.1</version>
+				<version>3.0</version>
 				<configuration>
 					<source>1.6</source>
 					<target>1.6</target>
@@ -382,7 +416,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-site-plugin</artifactId>
-				<version>3.1</version>
+				<version>3.2</version>
 			</plugin>
 		</plugins>
 	</build>
@@ -403,26 +437,4 @@
 			</snapshots>
 		</repository>
 	</repositories>
-	<dependencies>
-		<dependency>
-			<groupId>org.apache.struts</groupId>
-			<artifactId>struts2-core</artifactId>
-			<exclusions>
-				<exclusion>
-					<artifactId>javassist</artifactId>
-					<groupId>javassist</groupId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.tiles</groupId>
-			<artifactId>tiles-ognl</artifactId>
-			<exclusions>
-				<exclusion>
-					<artifactId>ognl</artifactId>
-					<groupId>ognl</groupId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-	</dependencies>
 </project>
