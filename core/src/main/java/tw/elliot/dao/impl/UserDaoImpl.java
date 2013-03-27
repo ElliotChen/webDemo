@@ -6,8 +6,8 @@ import org.springframework.stereotype.Repository;
 
 import tw.elliot.domain.User;
 @Repository
-public class UserDao extends AbstractBaseDao<User, String> {
-	private static final Logger logger = LoggerFactory.getLogger(UserDao.class);
+public class UserDaoImpl extends AbstractBaseDao<User, String> {
+	private static final Logger logger = LoggerFactory.getLogger(UserDaoImpl.class);
 	@Override
 	public Logger getLogger() {
 		return logger;

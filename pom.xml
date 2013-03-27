@@ -14,5 +14,6 @@
 		<module>parent</module>
 		<module>core</module>
 		<module>springmvc</module>
+    <module>struts2</module>
   </modules>
 </project>
